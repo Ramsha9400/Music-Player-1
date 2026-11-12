@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovely · Billie Eilish &amp; Khalid · Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stage">
+    <p class="app-label">Music Player</p>
+
+    <main class="player" aria-label="Music player">
+
+      <!-- Top bar: back (restart) and info toggle -->
+      <header class="top-bar">
+        <button class="back-btn" id="backBtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span>Back</span>
+        </button>
+        <button class="icon-btn" id="menuBtn" type="button"
+                aria-label="Show track info" aria-expanded="false" aria-controls="info">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </header>
+
+      <!-- Now playing -->
+      <section class="now" aria-live="polite">
+        <p class="artist">Billie Eilish &amp; Khalid</p>
+        <h1 class="title" id="title">Lovely</h1>
+      </section>
+
+      <!-- Record with arc volume dial -->
+      <div class="dial" id="dial">
+        <svg class="arc" viewBox="0 0 260 260" aria-hidden="true">
+          <path class="arc-line" d="M171.7 15.4 A122 122 0 0 1 171.7 244.6"/>
+          <circle class="arc-knob" id="knob" r="6" cx="171.7" cy="15.4"/>
+        </svg>
+        <span class="sign sign-plus" aria-hidden="true">+</span>
+        <span class="sign sign-minus" aria-hidden="true">−</span>
+
+        <div class="disc" id="disc">
+          <div class="cover"></div>
+        </div>
+
+        <!-- Real slider for keyboard and screen readers, visually hidden -->
+        <input type="range" id="volume" class="sr-only" min="0" max="100" value="70" aria-label="Volume">
+      </div>
+
+      <!-- Progress -->
+      <div class="progress">
+        <div class="times">
+          <span id="current">00:00</span>
+          <span id="duration">03:20</span>
+        </div>
+        <div class="line">
+          <span class="line-dot" id="seekDot" aria-hidden="true"></span>
+          <input type="range" id="seek" class="seek-input" min="0" max="200.62" value="0" aria-label="Seek position">
+        </div>
+      </div>
+
+      <!-- Transport -->
+      <div class="controls">
+        <button class="round" id="prevBtn" type="button" aria-label="Back 10 seconds">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6v12M18 6l-8 6 8 6z"/></svg>
+        </button>
+        <button class="round solid" id="playBtn" type="button" aria-label="Play"></button>
+        <button class="round" id="nextBtn" type="button" aria-label="Forward 10 seconds">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6v12M6 6l8 6-8 6z"/></svg>
+        </button>
+      </div>
+
+      <p class="hint">Space play/pause · ← → seek · ↑ ↓ volume · M info</p>
+
+      <!-- Info panel (opened by the top-right button) -->
+      <section class="info" id="info" hidden>
+        <h2>Track info</h2>
+        <p>Lovely · Billie Eilish &amp; Khalid</p>
+        <p>Duration 03:20</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- The song file lovely.mp3 must stay in this same folder.
+       Until then the player runs a timer so the controls still work. -->
+  <audio id="song" src="lovely.mp3" preload="auto"></audio>
+
+  <p class="credit">Created by @stackanddstyle</p>
+
+  <script src="script.js"></script>
+</body>
+</html>
